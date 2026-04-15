@@ -1,11 +1,679 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const services = [
+	{
+		title: "Truck Parts Supply",
+		description: "Quality truck parts for all major brands. Genuine and aftermarket options available.",
+		icon: "fa-truck-loading"
+	},
+	{
+		title: "Construction Services",
+		description: "Professional construction services for commercial and industrial projects.",
+		icon: "fa-hard-hat"
+	},
+	{
+		title: "Fleet Maintenance",
+		description: "Complete maintenance services to keep your vehicles running smoothly.",
+		icon: "fa-tools"
+	}
+];
+
+const projects = [
+	{
+		id: 1,
+		title: "Commercial Construction",
+		category: "Construction",
+		image: "/images/project1.jpg",
+		description: "Full-scale commercial building project"
+	},
+	{
+		id: 2,
+		title: "Truck Parts Supply",
+		category: "Truck Parts",
+		image: "/images/project2.jpg",
+		description: "Complete truck parts supply for fleet"
+	},
+	{
+		id: 3,
+		title: "Infrastructure Project",
+		category: "Construction",
+		image: "/images/project3.jpg",
+		description: "Major infrastructure development"
+	}
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Home">
+	<Header />
+	
+	<main>
+		<!-- Enhanced Hero Section -->
+		<section class="hero">
+			<div class="hero-bg">
+				<img src="/images/background.jpg" alt="Hero Background" class="hero-bg-image" />
+				<div class="hero-overlay"></div>
+				<div class="hero-particles"></div>
+			</div>
+			<div class="container hero-content">
+				<div class="hero-text">
+					<span class="hero-badge animate-fade-in-up">Truck Parts & Construction Experts</span>
+					<h1 class="animate-fade-in-up animate-delay-1">JOPCA <span class="highlight">CORPORATION</span></h1>
+					<p class="hero-subtitle animate-fade-in-up animate-delay-2">Truck Parts Trading & Construction</p>
+					<p class="hero-description animate-fade-in-up animate-delay-3">Your trusted partner for quality truck parts and professional construction services. With years of experience, we deliver excellence in every project.</p>
+					<div class="hero-buttons animate-fade-in-up animate-delay-4">
+						<a href="/contact" class="btn btn-glow">Get a Quote</a>
+						<a href="/projects" class="btn btn-outline">View Projects</a>
+					</div>
+				</div>
+			</div>
+			<div class="hero-scroll">
+				<span>Scroll Down</span>
+				<div class="scroll-indicator">
+					<div class="scroll-wheel"></div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Services Section -->
+		<section class="services section" data-scroll>
+			<div class="container">
+				<div class="section-header scroll-reveal">
+					<h2>Our Services</h2>
+					<p>Comprehensive solutions for your truck and construction needs</p>
+				</div>
+				
+				<div class="services-grid">
+					{services.map((service, index) => (
+						<div class="service-card scroll-reveal" style={`animation-delay: ${index * 0.1}s`}>
+							<div class="service-icon">
+								<i class={`fas ${service.icon}`}></i>
+							</div>
+							<h3>{service.title}</h3>
+							<p>{service.description}</p>
+							<a href="/services" class="service-link">
+								Learn More <i class="fas fa-arrow-right"></i>
+							</a>
+						</div>
+					))}
+				</div>
+				
+				<div class="text-center" style="margin-top: 50px;">
+					<a href="/services" class="btn btn-secondary">View All Services</a>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Featured Projects -->
+		<section class="featured-projects section" data-scroll>
+			<div class="container">
+				<div class="section-header scroll-reveal">
+					<h2>Featured Projects</h2>
+					<p>Showcasing our quality work and completed projects</p>
+				</div>
+				
+				<div class="projects-grid">
+					{projects.map((project, index) => (
+						<div class="project-card scroll-reveal" style={`animation-delay: ${index * 0.15}s`}>
+							<div class="project-image">
+								<img src={project.image} alt={project.title} loading="lazy" />
+								<div class="project-overlay">
+									<a href="/projects" class="project-link">
+										<i class="fas fa-expand"></i>
+									</a>
+								</div>
+								<span class="project-category">{project.category}</span>
+							</div>
+							<div class="project-info">
+								<h3>{project.title}</h3>
+								<p>{project.description}</p>
+							</div>
+						</div>
+					))}
+				</div>
+				
+				<div class="text-center" style="margin-top: 50px;">
+					<a href="/projects" class="btn btn-secondary">View All Projects</a>
+				</div>
+			</div>
+		</section>
+		
+		<!-- CTA Section -->
+		<section class="cta-section" data-scroll>
+			<div class="cta-bg">
+				<img src="/images/background.jpg" alt="CTA Background" />
+				<div class="cta-overlay"></div>
+			</div>
+			<div class="container">
+				<div class="cta-content scroll-reveal">
+					<h2>Ready to Start Your Project?</h2>
+					<p>Let's build something great together. Contact us today for a free consultation.</p>
+					<a href="/contact" class="btn btn-glow">Contact Us Now</a>
+				</div>
+			</div>
+		</section>
+	</main>
+	
+	<Footer />
 </Layout>
+
+<style>
+	/* Hero Section */
+	.hero {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.hero-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 0;
+	}
+	
+	.hero-bg-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transform: scale(1.1);
+		transition: transform 10s ease;
+	}
+	
+	.hero:hover .hero-bg-image {
+		transform: scale(1);
+	}
+	
+	.hero-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(135deg, rgba(26, 26, 46, 0.92) 0%, rgba(22, 33, 62, 0.85) 100%);
+	}
+	
+	.hero-content {
+		position: relative;
+		z-index: 2;
+		padding: 120px 0;
+	}
+	
+	.hero-text {
+		max-width: 700px;
+	}
+	
+	.hero-badge {
+		display: inline-block;
+		background: rgba(233, 69, 96, 0.25);
+		border: 1px solid var(--accent);
+		color: var(--accent);
+		padding: 10px 24px;
+		border-radius: 30px;
+		font-size: 0.9rem;
+		font-weight: 600;
+		margin-bottom: 25px;
+		letter-spacing: 1px;
+	}
+	
+	.hero-text h1 {
+		font-size: 4.5rem;
+		font-weight: 800;
+		color: var(--white);
+		line-height: 1.1;
+		margin-bottom: 15px;
+		letter-spacing: 2px;
+	}
+	
+	.hero-text h1 .highlight {
+		display: block;
+		color: var(--accent);
+	}
+	
+	.hero-subtitle {
+		font-size: 1.4rem;
+		color: var(--accent);
+		font-weight: 600;
+		letter-spacing: 4px;
+		margin-bottom: 25px;
+	}
+	
+	.hero-description {
+		font-size: 1.2rem;
+		color: rgba(255, 255, 255, 0.85);
+		margin-bottom: 40px;
+		max-width: 550px;
+		line-height: 1.8;
+	}
+	
+	.hero-buttons {
+		display: flex;
+		gap: 18px;
+		flex-wrap: wrap;
+	}
+	
+	/* Glowing Button */
+	.btn-glow {
+		background: var(--accent);
+		color: var(--white);
+		padding: 16px 36px;
+		font-size: 1.05rem;
+		border-radius: 8px;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.btn-glow::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+		transition: left 0.5s ease;
+	}
+	
+	.btn-glow:hover::before {
+		left: 100%;
+	}
+	
+	.btn-glow:hover {
+		background: var(--accent-hover);
+		box-shadow: 0 0 30px rgba(233, 69, 96, 0.5);
+	}
+	
+	.hero .btn-outline {
+		background: transparent;
+		border: 2px solid rgba(255, 255, 255, 0.5);
+		color: var(--white);
+		padding: 16px 36px;
+		font-size: 1.05rem;
+	}
+	
+	.hero .btn-outline:hover {
+		background: var(--white);
+		color: var(--primary);
+		border-color: var(--white);
+	}
+	
+	/* Scroll Indicator */
+	.hero-scroll {
+		position: absolute;
+		bottom: 40px;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 12px;
+		z-index: 2;
+	}
+	
+	.hero-scroll span {
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 0.85rem;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+	}
+	
+	.scroll-indicator {
+		width: 26px;
+		height: 40px;
+		border: 2px solid rgba(255, 255, 255, 0.3);
+		border-radius: 20px;
+		display: flex;
+		justify-content: center;
+		padding-top: 8px;
+	}
+	
+	.scroll-wheel {
+		width: 4px;
+		height: 8px;
+		background: var(--accent);
+		border-radius: 2px;
+		animation: scroll-bounce 1.5s infinite;
+	}
+	
+	@keyframes scroll-bounce {
+		0%, 100% { transform: translateY(0); opacity: 1; }
+		50% { transform: translateY(10px); opacity: 0.5; }
+	}
+	
+	/* Scroll Animations */
+	.scroll-reveal {
+		opacity: 0;
+		transform: translateY(50px);
+		transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	
+	.scroll-reveal.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	
+	/* Services */
+	.services {
+		background: var(--white);
+	}
+	
+	.services-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 35px;
+	}
+	
+	.service-card {
+		background: var(--white);
+		padding: 45px 35px;
+		border-radius: 16px;
+		box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		border: 1px solid var(--border);
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.service-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: var(--accent);
+		transform: scaleX(0);
+		transition: transform 0.4s ease;
+	}
+	
+	.service-card:hover {
+		transform: translateY(-12px);
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+	}
+	
+	.service-card:hover::before {
+		transform: scaleX(1);
+	}
+	
+	.service-icon {
+		width: 75px;
+		height: 75px;
+		background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+		border-radius: 16px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 28px;
+		transition: transform 0.4s ease;
+	}
+	
+	.service-icon i {
+		font-size: 1.8rem;
+		color: var(--white);
+	}
+	
+	.service-card:hover .service-icon {
+		transform: scale(1.1) rotate(5deg);
+	}
+	
+	.service-card h3 {
+		font-size: 1.35rem;
+		margin-bottom: 18px;
+		color: var(--primary);
+	}
+	
+	.service-card p {
+		color: var(--gray);
+		margin-bottom: 22px;
+		line-height: 1.75;
+	}
+	
+	.service-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		color: var(--accent);
+		font-weight: 600;
+		transition: all 0.3s ease;
+	}
+	
+	.service-link:hover {
+		gap: 15px;
+	}
+	
+	/* Projects */
+	.featured-projects {
+		background: var(--light);
+	}
+	
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 35px;
+	}
+	
+	.project-card {
+		background: var(--white);
+		border-radius: 16px;
+		overflow: hidden;
+		box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	
+	.project-card:hover {
+		transform: translateY(-15px);
+		box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+	}
+	
+	.project-image {
+		position: relative;
+		aspect-ratio: 16/10.5;
+		overflow: hidden;
+		background: var(--gray-light);
+	}
+	
+	.project-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	
+	.project-card:hover .project-image img {
+		transform: scale(1.15);
+	}
+	
+	.project-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(26, 26, 46, 0.75);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+	
+	.project-card:hover .project-overlay {
+		opacity: 1;
+	}
+	
+	.project-link {
+		width: 55px;
+		height: 55px;
+		background: var(--accent);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transform: scale(0);
+		transition: transform 0.3s ease;
+	}
+	
+	.project-card:hover .project-link {
+		transform: scale(1);
+	}
+	
+	.project-link i {
+		color: var(--white);
+		font-size: 1.2rem;
+	}
+	
+	.project-category {
+		position: absolute;
+		top: 18px;
+		left: 18px;
+		background: var(--accent);
+		color: var(--white);
+		padding: 8px 16px;
+		border-radius: 25px;
+		font-size: 0.8rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+	
+	.project-info {
+		padding: 28px;
+	}
+	
+	.project-info h3 {
+		font-size: 1.2rem;
+		margin-bottom: 10px;
+		color: var(--primary);
+	}
+	
+	.project-info p {
+		color: var(--gray);
+		font-size: 0.95rem;
+	}
+	
+	/* CTA Section */
+	.cta-section {
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.cta-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	
+	.cta-bg img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	
+	.cta-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(135deg, rgba(233, 69, 96, 0.95) 0%, rgba(233, 69, 96, 0.85) 100%);
+	}
+	
+	.cta-content {
+		position: relative;
+		z-index: 2;
+		text-align: center;
+		max-width: 650px;
+		margin: 0 auto;
+		padding: 100px 0;
+	}
+	
+	.cta-content h2 {
+		color: var(--white);
+		font-size: 2.8rem;
+		margin-bottom: 20px;
+	}
+	
+	.cta-content p {
+		color: rgba(255, 255, 255, 0.9);
+		margin-bottom: 35px;
+		font-size: 1.15rem;
+	}
+	
+	/* Responsive */
+	@media (max-width: 992px) {
+		.hero-text h1 {
+			font-size: 3.25rem;
+		}
+		
+		.services-grid,
+		.projects-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+	
+	@media (max-width: 576px) {
+		.hero-text h1 {
+			font-size: 2.5rem;
+		}
+		
+		.hero-buttons {
+			flex-direction: column;
+		}
+		
+		.hero .btn-outline {
+			width: 100%;
+		}
+	}
+</style>
+
+<script>
+	// Scroll Animation Observer
+	const scrollObserver = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+			}
+		});
+	}, {
+		threshold: 0.1,
+		rootMargin: '0px 0px -50px 0px'
+	});
+	
+	document.querySelectorAll('.scroll-reveal').forEach(el => {
+		scrollObserver.observe(el);
+	});
+	
+	// Smooth scroll for anchor links
+	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+		anchor.addEventListener('click', function(e) {
+			e.preventDefault();
+			const target = document.querySelector(this.getAttribute('href'));
+			if (target) {
+				target.scrollIntoView({ behavior: 'smooth' });
+			}
+		});
+	});
+	
+	// Header scroll effect
+	let lastScroll = 0;
+	window.addEventListener('scroll', () => {
+		const header = document.querySelector('.header');
+		const currentScroll = window.pageYOffset;
+		
+		if (currentScroll > 100) {
+			header?.classList.add('scrolled');
+		} else {
+			header?.classList.remove('scrolled');
+		}
+		
+		lastScroll = currentScroll;
+	});
+</script>

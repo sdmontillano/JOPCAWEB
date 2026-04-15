@@ -1,0 +1,59 @@
+---
+---
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+	<i class="fas fa-arrow-up"></i>
+</button>
+
+<style>
+	.back-to-top {
+		position: fixed;
+		bottom: 30px;
+		right: 30px;
+		width: 50px;
+		height: 50px;
+		background: var(--accent);
+		border: none;
+		border-radius: 12px;
+		color: var(--white);
+		font-size: 1.1rem;
+		cursor: pointer;
+		z-index: 999;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(20px);
+		transition: all 0.4s ease;
+		box-shadow: 0 4px 20px rgba(233, 69, 96, 0.3);
+	}
+	
+	.back-to-top.visible {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+	
+	.back-to-top:hover {
+		background: var(--accent-hover);
+		transform: translateY(-4px);
+		box-shadow: 0 8px 30px rgba(233, 69, 96, 0.4);
+	}
+</style>
+
+<script>
+	const backToTop = document.getElementById('backToTop');
+	
+	window.addEventListener('scroll', () => {
+		if (window.pageYOffset > 300) {
+			backToTop?.classList.add('visible');
+		} else {
+			backToTop?.classList.remove('visible');
+		}
+	});
+	
+	backToTop?.addEventListener('click', () => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth'
+		});
+	});
+</script>

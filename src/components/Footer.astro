@@ -1,0 +1,279 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+	<div class="container">
+		<div class="footer-grid">
+			<div class="footer-brand">
+				<a href="/" class="logo">
+					<img src="/images/LOGO.jpg" alt="JOPCA CORPORATION" />
+				</a>
+				<p class="tagline">Your trusted partner for quality truck parts and professional construction services.</p>
+				<div class="social-links">
+					<a href="https://www.facebook.com/jopcaconstructionsupplyinc" target="_blank" class="social-link" aria-label="Facebook">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+					<a href="https://www.facebook.com/profile.php?id=100064140399806" target="_blank" class="social-link" aria-label="JOPCA Truck Parts">
+						<i class="fas fa-truck"></i>
+					</a>
+					<a href="#" class="social-link" aria-label="Instagram">
+						<i class="fab fa-instagram"></i>
+					</a>
+					<a href="#" class="social-link" aria-label="Twitter">
+						<i class="fab fa-twitter"></i>
+					</a>
+					<a href="#" class="social-link" aria-label="LinkedIn">
+						<i class="fab fa-linkedin-in"></i>
+					</a>
+				</div>
+			</div>
+			
+			<div class="footer-links">
+				<h4>Quick Links</h4>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/projects">Projects</a></li>
+					<li><a href="/services">Services</a></li>
+					<li><a href="/careers">Careers</a></li>
+					<li><a href="/contact">Contact</a></li>
+				</ul>
+			</div>
+			
+			<div class="footer-services">
+				<h4>Our Services</h4>
+				<ul>
+					<li><a href="/services">Truck Parts Supply</a></li>
+					<li><a href="/services">Construction Services</a></li>
+					<li><a href="/services">Fleet Maintenance</a></li>
+					<li><a href="/services">Parts Consultation</a></li>
+				</ul>
+			</div>
+			
+			<div class="footer-contact">
+				<h4>Contact Us</h4>
+				<ul>
+					<li>
+						<i class="fas fa-building"></i>
+						<span><strong>JOPCA CORPORATION</strong></span>
+					</li>
+					<li>
+						<i class="fas fa-map-marker-alt"></i>
+						<span>#54, National Highway, Prk. 1, Gusa, Cagayan de Oro</span>
+					</li>
+					<li>
+						<i class="fas fa-phone-alt"></i>
+						<span>0917 728 6501</span>
+					</li>
+					<li>
+						<i class="fas fa-envelope"></i>
+						<span>jopcaconstructionsupply@gmail.com</span>
+					</li>
+					<li class="divider">
+						<i class="fas fa-minus"></i>
+					</li>
+					<li>
+						<i class="fas fa-tools"></i>
+						<span><strong>JOPCA Truck Parts Trading</strong></span>
+					</li>
+					<li>
+						<i class="fas fa-map-marker-alt"></i>
+						<span>National Highway, Zone 12, Brgy. Poblacion, Tagoloan</span>
+					</li>
+					<li>
+						<i class="fas fa-phone-alt"></i>
+						<span>0917 506 4427</span>
+					</li>
+					<li>
+						<i class="fas fa-envelope"></i>
+						<span>jopcatruckpartstrading@gmail.com</span>
+					</li>
+					<li class="divider">
+						<i class="fas fa-minus"></i>
+					</li>
+					<li>
+						<i class="fas fa-clock"></i>
+						<span>Mon - Sat: 8:00 AM - 5:00 PM</span>
+					</li>
+					<li>
+						<i class="fas fa-times-circle"></i>
+						<span>Sunday: CLOSED</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="footer-bottom">
+		<div class="container">
+			<p>&copy; {currentYear} JOPCA CORPORATION. All rights reserved.</p>
+			<div class="footer-bottom-links">
+				<a href="/privacy">Privacy Policy</a>
+				<a href="#">Terms of Service</a>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background: var(--primary);
+		color: var(--white);
+		padding: 80px 0 0;
+	}
+	
+	.footer-grid {
+		display: grid;
+		grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+		gap: 50px;
+		padding-bottom: 60px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	
+	.logo {
+		display: flex;
+		margin-bottom: 20px;
+	}
+	
+	.logo img {
+		max-height: 50px;
+		width: auto;
+	}
+	
+	.tagline {
+		color: rgba(255, 255, 255, 0.7);
+		margin-bottom: 25px;
+		line-height: 1.8;
+	}
+	
+	.social-links {
+		display: flex;
+		gap: 12px;
+	}
+	
+	.social-link {
+		width: 42px;
+		height: 42px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: var(--radius-sm);
+		transition: all 0.3s ease;
+	}
+	
+	.social-link:hover {
+		background: var(--accent);
+		transform: translateY(-3px);
+	}
+	
+	.social-link i {
+		font-size: 1rem;
+	}
+	
+	.footer-links h4,
+	.footer-services h4,
+	.footer-contact h4 {
+		font-size: 1.1rem;
+		margin-bottom: 25px;
+		color: var(--white);
+		position: relative;
+	}
+	
+	.footer-links h4::after,
+	.footer-services h4::after,
+	.footer-contact h4::after {
+		content: '';
+		position: absolute;
+		bottom: -10px;
+		left: 0;
+		width: 40px;
+		height: 2px;
+		background: var(--accent);
+	}
+	
+	.footer-links ul,
+	.footer-services ul,
+	.footer.contact ul {
+		list-style: none;
+	}
+	
+	.footer-links li,
+	.footer-services li {
+		margin-bottom: 14px;
+	}
+	
+	.footer-links a,
+	.footer-services a {
+		color: rgba(255, 255, 255, 0.7);
+		transition: all 0.3s ease;
+	}
+	
+	.footer-links a:hover,
+	.footer-services a:hover {
+		color: var(--accent);
+		padding-left: 8px;
+	}
+	
+	.footer-contact li {
+		display: flex;
+		align-items: flex-start;
+		gap: 12px;
+		margin-bottom: 18px;
+		color: rgba(255, 255, 255, 0.7);
+	}
+	
+	.footer-contact li i {
+		color: var(--accent);
+		margin-top: 4px;
+	}
+	
+	.footer-bottom {
+		padding: 25px 0;
+	}
+	
+	.footer-bottom .container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	.footer-bottom p {
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 0.9rem;
+	}
+	
+	.footer-bottom-links {
+		display: flex;
+		gap: 25px;
+	}
+	
+	.footer-bottom-links a {
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 0.9rem;
+	}
+	
+	.footer-bottom-links a:hover {
+		color: var(--accent);
+	}
+	
+	@media (max-width: 992px) {
+		.footer-grid {
+			grid-template-columns: 1fr 1fr;
+			gap: 40px;
+		}
+	}
+	
+	@media (max-width: 576px) {
+		.footer-grid {
+			grid-template-columns: 1fr;
+			gap: 35px;
+		}
+		
+		.footer-bottom .container {
+			flex-direction: column;
+			gap: 15px;
+			text-align: center;
+		}
+	}
+</style>
