@@ -1,0 +1,358 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const products = [
+	{ id: 1, name: "Truck Part 1", image: "/images/parts1.jpg" },
+	{ id: 2, name: "Truck Part 2", image: "/images/parts2.jpg" },
+	{ id: 3, name: "Truck Part 3", image: "/images/parts3.jpg" },
+	{ id: 4, name: "Truck Part 4", image: "/images/parts4.jpg" },
+	{ id: 5, name: "Truck Part 5", image: "/images/parts5.jpg" },
+	{ id: 6, name: "Truck Part 6", image: "/images/parts6.jpg" },
+	{ id: 7, name: "Truck Part 7", image: "/images/parts7.jpg" },
+	{ id: 8, name: "Truck Part 8", image: "/images/parts8.jpg" },
+	{ id: 9, name: "Truck Part 9", image: "/images/parts9.jpg" },
+	{ id: 10, name: "Truck Part 10", image: "/images/parts10.jpg" },
+	{ id: 11, name: "Truck Part 11", image: "/images/parts11.jpg" },
+	{ id: 12, name: "Truck Part 12", image: "/images/parts12.jpg" },
+	{ id: 13, name: "Truck Part 13", image: "/images/parts13.jpg" },
+	{ id: 14, name: "Truck Part 14", image: "/images/parts14.jpg" },
+	{ id: 15, name: "Truck Part 15", image: "/images/parts15.jpg" }
+];
+---
+
+<Layout title="Products">
+	<Header />
+	
+	<main>
+		<section class="page-header">
+			<div class="page-header-bg"></div>
+			<div class="container">
+				<span class="page-badge scroll-reveal">Our Catalog</span>
+				<h1 class="scroll-reveal">Truck Parts</h1>
+				<p class="scroll-reveal">Quality truck parts for all major brands</p>
+			</div>
+		</section>
+		
+		<section class="products-section section">
+			<div class="container">
+				<div class="products-grid">
+					{products.map((product, index) => (
+						<div class="product-card scroll-reveal" style={`animation-delay: ${index * 0.05}s`}>
+							<div class="product-image">
+								<img src={product.image} alt={product.name} loading="lazy" />
+								<div class="product-overlay">
+									<button class="product-zoom" data-src={product.image} data-title={product.name}>
+										<i class="fas fa-expand"></i>
+									</button>
+								</div>
+							</div>
+							<div class="product-info">
+								<h3>{product.name}</h3>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+		
+		<section class="cta-section">
+			<div class="container">
+				<div class="cta-content">
+					<h2>Need a Quote?</h2>
+					<p>Contact us for inquiries about our truck parts.</p>
+					<a href="/contact" class="btn btn-glow">Get Quote</a>
+				</div>
+			</div>
+		</section>
+	</main>
+	
+	<div class="lightbox" id="lightbox">
+		<button class="lightbox-close" id="lightboxClose">
+			<i class="fas fa-times"></i>
+		</button>
+		<div class="lightbox-content">
+			<img src="" alt="" id="lightboxImage" />
+			<h3 id="lightboxTitle"></h3>
+		</div>
+	</div>
+	
+	<Footer />
+</Layout>
+
+<style>
+	.page-header {
+		position: relative;
+		padding: 160px 0 90px;
+		text-align: center;
+		background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+		overflow: hidden;
+	}
+	
+	.page-header .container { position: relative; z-index: 2; }
+	
+	.page-badge {
+		display: inline-block;
+		background: rgba(233, 69, 96, 0.2);
+		color: var(--accent);
+		padding: 10px 24px;
+		border-radius: 30px;
+		font-size: 0.85rem;
+		font-weight: 600;
+		margin-bottom: 25px;
+		letter-spacing: 1px;
+	}
+	
+	.page-header h1 {
+		font-size: 3.5rem;
+		color: var(--white);
+		margin-bottom: 15px;
+	}
+	
+	.page-header p {
+		color: rgba(255, 255, 255, 0.85);
+		font-size: 1.15rem;
+	}
+	
+	.products-section {
+		padding: 80px 0;
+		background: var(--white);
+	}
+	
+	.products-grid {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 20px;
+	}
+	
+	.product-card {
+		background: var(--white);
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+		transition: all 0.4s ease;
+	}
+	
+	.product-card:hover {
+		transform: translateY(-8px);
+		box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+	}
+	
+	.product-image {
+		position: relative;
+		aspect-ratio: 1;
+		overflow: hidden;
+		background: var(--light);
+	}
+	
+	.product-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.5s ease;
+	}
+	
+	.product-card:hover .product-image img {
+		transform: scale(1.1);
+	}
+	
+	.product-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(26, 26, 46, 0.75);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+	
+	.product-card:hover .product-overlay {
+		opacity: 1;
+	}
+	
+	.product-zoom {
+		width: 45px;
+		height: 45px;
+		background: var(--accent);
+		border: none;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transform: scale(0);
+		transition: transform 0.3s ease;
+	}
+	
+	.product-card:hover .product-zoom {
+		transform: scale(1);
+	}
+	
+	.product-zoom i {
+		color: var(--white);
+		font-size: 1rem;
+	}
+	
+	.product-info {
+		padding: 15px;
+		text-align: center;
+	}
+	
+	.product-info h3 {
+		font-size: 0.95rem;
+		color: var(--primary);
+	}
+	
+	.cta-section {
+		background: var(--light);
+		padding: 60px 0;
+	}
+	
+	.cta-content {
+		text-align: center;
+	}
+	
+	.cta-content h2 {
+		color: var(--primary);
+		margin-bottom: 15px;
+	}
+	
+	.cta-content p {
+		color: var(--gray);
+		margin-bottom: 25px;
+	}
+	
+	.btn-glow {
+		background: var(--accent);
+		color: var(--white);
+		padding: 14px 32px;
+	}
+	
+	.btn-glow:hover {
+		background: var(--accent-hover);
+		box-shadow: 0 0 25px rgba(233, 69, 96, 0.4);
+	}
+	
+	/* Lightbox */
+	.lightbox {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.95);
+		z-index: 2000;
+		display: none;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.lightbox.active {
+		display: flex;
+	}
+	
+	.lightbox-close {
+		position: absolute;
+		top: 25px;
+		right: 25px;
+		width: 45px;
+		height: 45px;
+		background: rgba(255, 255, 255, 0.1);
+		border: none;
+		border-radius: 50%;
+		color: var(--white);
+		font-size: 1.1rem;
+		cursor: pointer;
+	}
+	
+	.lightbox-close:hover {
+		background: var(--accent);
+	}
+	
+	.lightbox-content {
+		text-align: center;
+		max-width: 80%;
+	}
+	
+	.lightbox-content img {
+		max-width: 100%;
+		max-height: 70vh;
+		object-fit: contain;
+		border-radius: 10px;
+	}
+	
+	.lightbox-content h3 {
+		color: var(--white);
+		margin-top: 20px;
+		font-size: 1.4rem;
+	}
+	
+	/* Scroll Animation */
+	.scroll-reveal {
+		opacity: 0;
+		transform: translateY(35px);
+		transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	
+	.scroll-reveal.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	
+	@media (max-width: 1200px) {
+		.products-grid { grid-template-columns: repeat(4, 1fr); }
+	}
+	
+	@media (max-width: 992px) {
+		.products-grid { grid-template-columns: repeat(3, 1fr); }
+	}
+	
+	@media (max-width: 768px) {
+		.products-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+		.page-header h1 { font-size: 2.5rem; }
+	}
+	
+	@media (max-width: 480px) {
+		.products-grid { grid-template-columns: 1fr; }
+	}
+</style>
+
+<script>
+	const scrollObserver = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) entry.target.classList.add('visible');
+		});
+	}, { threshold: 0.1 });
+	
+	document.querySelectorAll('.scroll-reveal').forEach(el => scrollObserver.observe(el));
+	
+	// Lightbox
+	const lightbox = document.getElementById('lightbox');
+	const lightboxImage = document.getElementById('lightboxImage');
+	const lightboxTitle = document.getElementById('lightboxTitle');
+	const lightboxClose = document.getElementById('lightboxClose');
+	const zoomBtns = document.querySelectorAll('.product-zoom');
+	
+	zoomBtns.forEach(btn => {
+		btn.addEventListener('click', () => {
+			lightboxImage.src = btn.dataset.src;
+			lightboxTitle.textContent = btn.dataset.title;
+			lightbox.classList.add('active');
+			document.body.style.overflow = 'hidden';
+		});
+	});
+	
+	function closeLightbox() {
+		lightbox.classList.remove('active');
+		document.body.style.overflow = '';
+	}
+	
+	lightboxClose?.addEventListener('click', closeLightbox);
+	lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+	document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+</script>
