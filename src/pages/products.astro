@@ -4,21 +4,21 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 const products = [
-	{ id: 1, name: "Truck Part 1", image: "/images/parts1.jpg" },
-	{ id: 2, name: "Truck Part 2", image: "/images/parts2.jpg" },
-	{ id: 3, name: "Truck Part 3", image: "/images/parts3.jpg" },
-	{ id: 4, name: "Truck Part 4", image: "/images/parts4.jpg" },
-	{ id: 5, name: "Truck Part 5", image: "/images/parts5.jpg" },
-	{ id: 6, name: "Truck Part 6", image: "/images/parts6.jpg" },
-	{ id: 7, name: "Truck Part 7", image: "/images/parts7.jpg" },
-	{ id: 8, name: "Truck Part 8", image: "/images/parts8.jpg" },
-	{ id: 9, name: "Truck Part 9", image: "/images/parts9.jpg" },
-	{ id: 10, name: "Truck Part 10", image: "/images/parts10.jpg" },
-	{ id: 11, name: "Truck Part 11", image: "/images/parts11.jpg" },
-	{ id: 12, name: "Truck Part 12", image: "/images/parts12.jpg" },
-	{ id: 13, name: "Truck Part 13", image: "/images/parts13.jpg" },
-	{ id: 14, name: "Truck Part 14", image: "/images/parts14.jpg" },
-	{ id: 15, name: "Truck Part 15", image: "/images/parts15.jpg" }
+	{ id: 1, image: "/images/parts1.jpg" },
+	{ id: 2, image: "/images/parts2.jpg" },
+	{ id: 3, image: "/images/parts3.jpg" },
+	{ id: 4, image: "/images/parts4.jpg" },
+	{ id: 5, image: "/images/parts5.jpg" },
+	{ id: 6, image: "/images/parts6.jpg" },
+	{ id: 7, image: "/images/parts7.jpg" },
+	{ id: 8, image: "/images/parts8.jpg" },
+	{ id: 9, image: "/images/parts9.jpg" },
+	{ id: 10, image: "/images/parts10.jpg" },
+	{ id: 11, image: "/images/parts11.jpg" },
+	{ id: 12, image: "/images/parts12.jpg" },
+	{ id: 13, image: "/images/parts13.jpg" },
+	{ id: 14, image: "/images/parts14.jpg" },
+	{ id: 15, image: "/images/parts15.jpg" }
 ];
 ---
 
@@ -43,13 +43,11 @@ const products = [
 							<div class="product-image">
 								<img src={product.image} alt={product.name} loading="lazy" />
 								<div class="product-overlay">
-									<button class="product-zoom" data-src={product.image} data-title={product.name}>
+									<button class="product-zoom" data-src={product.image} data-title="Truck Parts">
 										<i class="fas fa-expand"></i>
 									</button>
 								</div>
 							</div>
-							<div class="product-info">
-								<h3>{product.name}</h3>
 							</div>
 						</div>
 					))}
