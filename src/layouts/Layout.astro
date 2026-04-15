@@ -15,16 +15,50 @@ const { title, description = "JOPCA CORPORATION - Truck Parts Trading & Construc
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Meta Tags -->
 		<title>{title} | JOPCA CORPORATION</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content="truck parts, construction, JOPCA, truck parts trading, construction services, fleet maintenance, Philippines, Cagayan de Oro" />
+		<meta name="author" content="JOPCA CORPORATION" />
+		<meta name="robots" content="index, follow" />
+		<meta name="geo.region" content="PH" />
+		<meta name="geo.placename" content="Cagayan de Oro" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://jopca.vercel.app/" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/images/LOGO.jpg" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://jopca.vercel.app/" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content="/images/LOGO.jpg" />
+		
+		<link rel="canonical" href="https://jopca.vercel.app/" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 	</head>
+	
+	<!-- Google Analytics Placeholder - Add your GA tracking ID when ready -->
+	<!-- 
+	<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'YOUR_GA_ID');
+	</script> 
+	-->
 	<body>
 		<Preloader />
 		<slot />

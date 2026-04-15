@@ -1,0 +1,16 @@
+# Robots.txt for JOPCA CORPORATION Website
+# https://jopca.vercel.app/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://jopca.vercel.app/sitemap.xml
+
+# Crawl-delay (optional - be nice to the server)
+Crawl-delay: 1
+
+# Disallow private directories (if any)
+Disallow: /node_modules/
+Disallow: /.env
+Disallow: /dist/
