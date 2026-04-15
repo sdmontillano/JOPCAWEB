@@ -70,6 +70,12 @@ const products = [
 		<button class="lightbox-close" id="lightboxClose">
 			<i class="fas fa-times"></i>
 		</button>
+		<button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+			<i class="fas fa-chevron-left"></i>
+		</button>
+		<button class="lightbox-nav lightbox-next" id="lightboxNext">
+			<i class="fas fa-chevron-right"></i>
+		</button>
 		<div class="lightbox-content">
 			<img src="" alt="" id="lightboxImage" />
 			<h3 id="lightboxTitle"></h3>
@@ -272,6 +278,30 @@ const products = [
 		background: var(--accent);
 	}
 	
+	.lightbox-nav {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 50px;
+		height: 50px;
+		background: rgba(255, 255, 255, 0.1);
+		border: none;
+		border-radius: 50%;
+		color: var(--white);
+		font-size: 1.2rem;
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+	
+	.lightbox-nav:hover {
+		background: var(--accent);
+		transform: translateY(-50%) scale(1.1);
+	}
+	
+	.lightbox-prev { left: 25px; }
+	
+	.lightbox-next { right: 25px; }
+	
 	.lightbox-content {
 		text-align: center;
 		max-width: 80%;
@@ -329,15 +359,21 @@ const products = [
 	
 	document.querySelectorAll('.scroll-reveal').forEach(el => scrollObserver.observe(el));
 	
-	// Lightbox
+	// Lightbox with Navigation
 	const lightbox = document.getElementById('lightbox');
 	const lightboxImage = document.getElementById('lightboxImage');
 	const lightboxTitle = document.getElementById('lightboxTitle');
 	const lightboxClose = document.getElementById('lightboxClose');
+	const lightboxPrev = document.getElementById('lightboxPrev');
+	const lightboxNext = document.getElementById('lightboxNext');
 	const zoomBtns = document.querySelectorAll('.product-zoom');
 	
-	zoomBtns.forEach(btn => {
-		btn.addEventListener('click', () => {
+	let currentIndex = 0;
+	
+	zoomBtns.forEach((btn, index) => {
+		btn.addEventListener('click', (e) => {
+			e.stopPropagation();
+			currentIndex = index;
 			lightboxImage.src = btn.dataset.src;
 			lightboxTitle.textContent = btn.dataset.title;
 			lightbox.classList.add('active');
@@ -350,7 +386,23 @@ const products = [
 		document.body.style.overflow = '';
 	}
 	
+	function navigateLightbox(direction) {
+		const newIndex = currentIndex + direction;
+		if (newIndex >= 0 && newIndex < zoomBtns.length) {
+			currentIndex = newIndex;
+			lightboxImage.src = zoomBtns[currentIndex].dataset.src;
+			lightboxTitle.textContent = zoomBtns[currentIndex].dataset.title;
+		}
+	}
+	
 	lightboxClose?.addEventListener('click', closeLightbox);
+	lightboxPrev?.addEventListener('click', () => navigateLightbox(-1));
+	lightboxNext?.addEventListener('click', () => navigateLightbox(1));
 	lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-	document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+	document.addEventListener('keydown', (e) => {
+		if (!lightbox.classList.contains('active')) return;
+		if (e.key === 'Escape') closeLightbox();
+		if (e.key === 'ArrowLeft') navigateLightbox(-1);
+		if (e.key === 'ArrowRight') navigateLightbox(1);
+	});
 </script>
