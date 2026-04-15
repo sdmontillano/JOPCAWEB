@@ -60,7 +60,7 @@ const projects = [
 			<div class="container hero-content">
 				<div class="hero-text">
 					<span class="hero-badge animate-fade-in-up">Truck Parts & Construction Experts</span>
-					<h1 class="animate-fade-in-up animate-delay-1">JOPCA <span class="highlight">CORPORATION</span></h1>
+					<h1 class="animate-fade-in-up animate-delay-1"><span class="jopca-name">JOPCA</span> <span class="highlight">CORPORATION</span></h1>
 					<p class="hero-subtitle animate-fade-in-up animate-delay-2">Truck Parts Trading & Construction</p>
 					<p class="hero-description animate-fade-in-up animate-delay-3">Your trusted partner for quality truck parts and professional construction services. With years of experience, we deliver excellence in every project.</p>
 					<div class="hero-buttons animate-fade-in-up animate-delay-4">
@@ -222,13 +222,22 @@ const projects = [
 		letter-spacing: 1px;
 	}
 	
-	.hero-text h1 {
+.hero-text h1 {
 		font-size: 4.5rem;
 		font-weight: 800;
 		color: var(--white);
 		line-height: 1.1;
-		margin-bottom: 15px;
+		margin-bottom: 10px;
 		letter-spacing: 2px;
+	}
+	
+	.hero-text h1 .jopca-name {
+		color: var(--white);
+	}
+	
+	.hero-text h1 .highlight {
+		display: block;
+		color: var(--accent);
 	}
 	
 	.hero-text h1 .highlight {
