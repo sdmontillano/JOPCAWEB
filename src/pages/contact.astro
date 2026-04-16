@@ -149,9 +149,33 @@ import Footer from '../components/Footer.astro';
 		<section class="map-section">
 			<div class="container">
 				<div class="map-wrapper">
-					<div class="map-placeholder">
-						<i class="fas fa-map-marked-alt"></i>
-						<p>Google Map will be displayed here</p>
+					<div class="map-controls">
+						<button class="map-btn active" data-view="satellite">Satellite</button>
+						<button class="map-btn" data-view="street">Street View</button>
+					</div>
+					<div class="map-container">
+						<iframe 
+							src="https://maps.google.com/maps?q=8.4747903,124.6869933&hl=en&z=18&t=k&output=embed"
+							width="100%" 
+							height="450" 
+							style="border:0; border-radius: 12px;" 
+							allowfullscreen="" 
+							loading="lazy" 
+							referrerpolicy="no-referrer-when-downgrade"
+							class="map-iframe"
+							id="mapFrame"
+						></iframe>
+						<iframe 
+							src="https://maps.google.com/maps?q=8.4747903,124.6869933&hl=en&z=18&layer=c&cbp=11,333.12402,,0,0&output=embed"
+							width="100%" 
+							height="450" 
+							style="border:0; border-radius: 12px; display: none;" 
+							allowfullscreen="" 
+							loading="lazy" 
+							referrerpolicy="no-referrer-when-downgrade"
+							class="map-iframe"
+							id="streetFrame"
+						></iframe>
 					</div>
 				</div>
 			</div>
@@ -340,6 +364,42 @@ import Footer from '../components/Footer.astro';
 		box-shadow: 0 8px 35px rgba(0, 0, 0, 0.08);
 	}
 	
+	.map-controls {
+		display: flex;
+		gap: 10px;
+		margin-bottom: 15px;
+	}
+	
+	.map-btn {
+		padding: 12px 24px;
+		background: var(--light);
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		font-size: 0.9rem;
+		font-weight: 500;
+		color: var(--gray);
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+	
+	.map-btn:hover {
+		background: var(--primary);
+		color: var(--white);
+		border-color: var(--primary);
+		transform: translateY(-2px);
+	}
+	
+	.map-btn.active {
+		background: var(--accent);
+		color: var(--white);
+		border-color: var(--accent);
+	}
+	
+	.map-btn.active:hover {
+		background: var(--accent-hover);
+		border-color: var(--accent-hover);
+	}
+	
 	.map-placeholder {
 		background: var(--light);
 		height: 380px;
@@ -386,10 +446,36 @@ import Footer from '../components/Footer.astro';
 	document.querySelectorAll('.scroll-reveal').forEach(el => scrollObserver.observe(el));
 	
 	// Form submit
-	const form = document.getElementById('contactForm');
+	const form = document.getElementById('contactForm') as HTMLFormElement;
 	form?.addEventListener('submit', (e) => {
 		e.preventDefault();
 		alert('Thank you for your inquiry! We will get back to you within 24 hours.');
 		form.reset();
+	});
+	
+	// Map toggle functionality
+	const mapButtons = document.querySelectorAll('.map-btn');
+	const mapFrame = document.getElementById('mapFrame') as HTMLIFrameElement;
+	const streetFrame = document.getElementById('streetFrame') as HTMLIFrameElement;
+	
+	mapButtons.forEach(button => {
+		button.addEventListener('click', () => {
+			const view = (button as HTMLElement).dataset.view;
+			
+			// Remove active class from all buttons
+			mapButtons.forEach(btn => btn.classList.remove('active'));
+			
+			// Add active class to clicked button
+			button.classList.add('active');
+			
+			// Toggle iframe visibility
+			if (view === 'satellite' && mapFrame && streetFrame) {
+				mapFrame.style.display = 'block';
+				streetFrame.style.display = 'none';
+			} else if (view === 'street' && mapFrame && streetFrame) {
+				mapFrame.style.display = 'none';
+				streetFrame.style.display = 'block';
+			}
+		});
 	});
 </script>
