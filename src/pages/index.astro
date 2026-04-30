@@ -15,7 +15,7 @@ const services = [
 		icon: "fa-industry"
 	},
 	{
-		title: "Truck Rental",
+		title: "Rental Service",
 		description: "We offer truck rental for sand delivery and concrete mixing. Contact us to inquire.",
 		icon: "fa-truck-moving"
 	}
@@ -24,24 +24,24 @@ const services = [
 const projects = [
 	{
 		id: 1,
-		title: "Commercial Construction",
-		category: "Construction",
+		title: "Supply Project 1",
+		category: "Supply",
 		image: "/images/project1.jpg",
-		description: "Full-scale commercial building project"
+		description: "Quality supply services"
 	},
 	{
 		id: 2,
-		title: "Truck Parts Supply",
-		category: "Truck Parts",
+		title: "Supply Project 2",
+		category: "Supply",
 		image: "/images/project2.jpg",
-		description: "Complete truck parts supply for fleet"
+		description: "Quality supply services"
 	},
 	{
 		id: 3,
-		title: "Infrastructure Project",
-		category: "Construction",
+		title: "Supply Project 3",
+		category: "Supply",
 		image: "/images/project3.jpg",
-		description: "Major infrastructure development"
+		description: "Quality supply services"
 	}
 ];
 ---
@@ -135,6 +135,50 @@ const projects = [
 				
 				<div class="text-center" style="margin-top: 50px;">
 					<a href="/projects" class="btn btn-secondary">View All Projects</a>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Why Choose Us Section -->
+		<section class="why-choose section" data-scroll>
+			<div class="container">
+				<div class="section-header scroll-reveal">
+					<h2>Why Choose JOPCA?</h2>
+					<p>Your trusted partner for quality supply</p>
+				</div>
+				
+				<div class="features-grid">
+					<div class="feature-card scroll-reveal">
+						<div class="feature-icon">
+							<i class="fas fa-check-circle"></i>
+						</div>
+						<h3>Quality Products</h3>
+						<p>Genuine and aftermarket parts from trusted brands.</p>
+					</div>
+					
+					<div class="feature-card scroll-reveal">
+						<div class="feature-icon">
+							<i class="fas fa-truck"></i>
+						</div>
+						<h3>Reliable Supply</h3>
+						<p>Consistent delivery of ready mix concrete and materials.</p>
+					</div>
+					
+					<div class="feature-card scroll-reveal">
+						<div class="feature-icon">
+							<i class="fas fa-clock"></i>
+						</div>
+						<h3>Fast Service</h3>
+						<p>Quick response and on-time delivery for all orders.</p>
+					</div>
+					
+					<div class="feature-card scroll-reveal">
+						<div class="feature-icon">
+							<i class="fas fa-handshake"></i>
+						</div>
+						<h3>Expert Support</h3>
+						<p>Professional advice for all your truck and construction needs.</p>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -613,6 +657,65 @@ const projects = [
 		color: rgba(255, 255, 255, 0.9);
 		margin-bottom: 35px;
 		font-size: 1.15rem;
+	}
+	
+	/* Why Choose Us */
+	.why-choose { background: var(--light); }
+	
+	.features-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 30px;
+	}
+	
+	.feature-card {
+		background: var(--white);
+		padding: 35px 25px;
+		border-radius: 16px;
+		text-align: center;
+		box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+		transition: all 0.4s ease;
+	}
+	
+	.feature-card:hover {
+		transform: translateY(-10px);
+		box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+	}
+	
+	.feature-icon {
+		width: 65px;
+		height: 65px;
+		background: var(--accent);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto 20px;
+	}
+	
+	.feature-icon i {
+		font-size: 1.5rem;
+		color: var(--white);
+	}
+	
+	.feature-card h3 {
+		font-size: 1.15rem;
+		margin-bottom: 12px;
+		color: var(--primary);
+	}
+	
+	.feature-card p {
+		font-size: 0.9rem;
+		color: var(--gray);
+		line-height: 1.6;
+	}
+	
+	@media (max-width: 992px) {
+		.features-grid { grid-template-columns: repeat(2, 1fr); }
+	}
+	
+	@media (max-width: 576px) {
+		.features-grid { grid-template-columns: 1fr; }
 	}
 	
 	/* Responsive */
