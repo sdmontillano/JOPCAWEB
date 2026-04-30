@@ -392,9 +392,16 @@ import Footer from '../components/Footer.astro';
 </style>
 
 <script>
-	// Form submission
-	const form = document.getElementById('contactForm') as HTMLFormElement;
+	const scrollObserver = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) entry.target.classList.add('visible');
+		});
+	}, { threshold: 0.1 });
 	
+	document.querySelectorAll('.scroll-reveal').forEach(el => scrollObserver.observe(el));
+	
+	// Form submit
+	const form = document.getElementById('contactForm') as HTMLFormElement;
 	form?.addEventListener('submit', (e) => {
 		e.preventDefault();
 		alert('Thank you for your inquiry! We will get back to you within 24 hours.');
