@@ -20,10 +20,10 @@ const services = [
 	},
 	{
 		id: 3,
-		title: "Truck Rental",
+		title: "Rental Service",
 		description: "We offer truck rental services for sand delivery and concrete mixing needs. Contact us to inquire about available units and rates.",
 		icon: "fa-truck-moving",
-		features: ["Sand Truck Rental", "Ready Mix Truck Rental", "Flexible Rates", "Well-Maintained Units", "Driver Available", "Competitive Pricing"]
+		features: ["10 Wheeler Dump Truck", "10 Wheeler Mixer Truck", "1cu.m Bucket Backhoe", "37m Sky Pumpcrete", "3cu.m Wheel Loader"]
 	}
 ];
 
@@ -78,6 +78,57 @@ const products = [
 							</ul>
 						</div>
 					))}
+				</div>
+			</div>
+		</section>
+		
+		<!-- Rental Fleet Section -->
+		<section class="rental-fleet section">
+			<div class="container">
+				<div class="section-header scroll-reveal">
+					<h2>Our Rental Fleet</h2>
+					<p>Available units for rent</p>
+				</div>
+				
+				<div class="rental-grid">
+					<div class="rental-card scroll-reveal">
+						<div class="rental-image">
+							<img src="/images/parts20.jpg" alt="10 Wheeler Dump Truck" loading="lazy" />
+						</div>
+						<div class="rental-info">
+							<h3>10 Wheeler Dump Truck</h3>
+						</div>
+					</div>
+					
+					<div class="rental-card scroll-reveal">
+						<div class="rental-image">
+							<img src="/images/parts21.jpg" alt="10 Wheeler Mixer Truck" loading="lazy" />
+						</div>
+						<div class="rental-info">
+							<h3>10 Wheeler Mixer Truck</h3>
+						</div>
+					</div>
+					
+					<div class="rental-card scroll-reveal">
+						<div class="rental-image">
+							<img src="/images/parts22.jpg" alt="1cu.m Bucket Backhoe" loading="lazy" />
+						</div>
+						<div class="rental-info">
+							<h3>1cu.m Bucket Backhoe</h3>
+						</div>
+					</div>
+					
+					<div class="rental-card scroll-reveal">
+						<div class="rental-info">
+							<h3>37m Sky Pumpcrete</h3>
+						</div>
+					</div>
+					
+					<div class="rental-card scroll-reveal">
+						<div class="rental-info">
+							<h3>3cu.m Wheel Loader</h3>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -369,6 +420,63 @@ const products = [
 		background: var(--primary);
 		color: var(--white);
 		box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+	}
+	
+	/* Rental Fleet */
+	.rental-fleet { background: var(--light); }
+	
+	.rental-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 30px;
+	}
+	
+	.rental-card {
+		background: var(--white);
+		border-radius: 16px;
+		overflow: hidden;
+		box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+		transition: all 0.4s ease;
+	}
+	
+	.rental-card:hover {
+		transform: translateY(-10px);
+		box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+	}
+	
+	.rental-image {
+		aspect-ratio: 16/10;
+		overflow: hidden;
+		background: var(--gray-light);
+	}
+	
+	.rental-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.5s ease;
+	}
+	
+	.rental-card:hover .rental-image img {
+		transform: scale(1.1);
+	}
+	
+	.rental-info {
+		padding: 25px;
+		text-align: center;
+	}
+	
+	.rental-info h3 {
+		font-size: 1.15rem;
+		color: var(--primary);
+	}
+	
+	@media (max-width: 992px) {
+		.rental-grid { grid-template-columns: repeat(2, 1fr); }
+	}
+	
+	@media (max-width: 576px) {
+		.rental-grid { grid-template-columns: 1fr; }
 	}
 	
 	/* Scroll Animation */
