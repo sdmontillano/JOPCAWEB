@@ -437,12 +437,29 @@ const benefits = [
 		.benefits-grid,
 		.apply-options { grid-template-columns: repeat(2, 1fr); }
 		.jobs-grid { grid-template-columns: 1fr; }
+		.page-header h1 { font-size: 2.75rem; }
+		.page-header { padding: 140px 0 80px; }
+	}
+	
+	@media (max-width: 768px) {
+		.benefits-section,
+		.jobs-section { padding: 50px 0; }
+		.benefit-card { padding: 28px 20px; }
+		.benefits-grid { gap: 18px; }
+		.job-card { padding: 24px; }
+		.apply-section { padding: 50px 0; }
+		.apply-content h2 { font-size: 1.75rem; }
+		.page-header h1 { font-size: 2.25rem; }
+		.page-header p { font-size: 1rem; }
 	}
 	
 	@media (max-width: 576px) {
 		.benefits-grid,
 		.apply-options { grid-template-columns: 1fr; }
-		.page-header h1 { font-size: 2.5rem; }
+		.page-header h1 { font-size: 1.85rem; }
+		.page-badge { font-size: 0.75rem; padding: 8px 18px; }
+		.apply-options { gap: 16px; }
+		.apply-option { padding: 24px 16px; }
 	}
 </style>
 

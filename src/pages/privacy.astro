@@ -175,9 +175,23 @@ import Footer from '../components/Footer.astro';
 		color: var(--primary);
 	}
 	
+	@media (max-width: 992px) {
+		.page-header { padding: 140px 0 70px; }
+	}
+	
 	@media (max-width: 768px) {
-		.page-header h1 {
-			font-size: 2.25rem;
-		}
+		.page-header h1 { font-size: 2.25rem; }
+		.page-header p { font-size: 1rem; }
+		.content-section { padding: 50px 0; }
+		.policy-content h2 { font-size: 1.2rem; }
+	}
+	
+	@media (max-width: 576px) {
+		.page-header h1 { font-size: 1.85rem; }
+		.page-header { padding: 120px 0 60px; }
+		.content-section { padding: 40px 0; }
+		.policy-content h2 { font-size: 1.1rem; margin: 30px 0 15px; }
+		.policy-content p { font-size: 0.95rem; }
+		.contact-info { padding: 20px !important; }
 	}
 </style>
