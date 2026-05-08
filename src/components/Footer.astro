@@ -254,16 +254,38 @@ const currentYear = new Date().getFullYear();
 		}
 	}
 	
+	@media (max-width: 768px) {
+		.footer {
+			padding: 50px 0 0;
+		}
+		
+		.footer-grid {
+			gap: 30px;
+			padding-bottom: 40px;
+		}
+		
+		.footer-links h4,
+		.footer-services h4,
+		.footer-contact h4 {
+			font-size: 1rem;
+			margin-bottom: 20px;
+		}
+	}
+	
 	@media (max-width: 576px) {
 		.footer-grid {
 			grid-template-columns: 1fr;
-			gap: 35px;
+			gap: 30px;
 		}
 		
 		.footer-bottom .container {
 			flex-direction: column;
-			gap: 15px;
+			gap: 12px;
 			text-align: center;
+		}
+		
+		.footer-bottom-links {
+			justify-content: center;
 		}
 	}
 </style>

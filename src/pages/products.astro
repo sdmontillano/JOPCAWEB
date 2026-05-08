@@ -358,12 +358,23 @@ const products = [
 	}
 	
 	@media (max-width: 768px) {
-		.products-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+		.products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 		.page-header h1 { font-size: 2.5rem; }
+		.page-header { padding: 140px 0 70px; }
+		.products-section { padding: 50px 0; }
+		.lightbox-nav { width: 40px; height: 40px; font-size: 1rem; }
+		.lightbox-prev { left: 10px; }
+		.lightbox-next { right: 10px; }
+		.lightbox-content { max-width: 92%; }
 	}
 	
 	@media (max-width: 480px) {
-		.products-grid { grid-template-columns: 1fr; }
+		.products-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+		.product-card { border-radius: 8px; }
+		.page-header h1 { font-size: 2rem; }
+		.page-header p { font-size: 1rem; }
+		.cta-content h2 { font-size: 1.5rem; }
+		.lightbox-nav { display: none; }
 	}
 </style>
 

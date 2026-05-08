@@ -473,6 +473,25 @@ const products = [
 	@media (max-width: 992px) {
 		.services-grid, .products-grid { grid-template-columns: 1fr; }
 		.page-header h1 { font-size: 2.75rem; }
+		.page-header { padding: 150px 0 80px; }
+	}
+	
+	@media (max-width: 768px) {
+		.services-section, .rental-fleet, .products-section { padding: 50px 0; }
+		.service-card { padding: 30px 24px; }
+		.service-features { grid-template-columns: 1fr; }
+		.product-card { padding: 24px 20px; }
+		.page-header h1 { font-size: 2.25rem; }
+		.page-header p { font-size: 1rem; }
+		.cta-content h2 { font-size: 1.75rem; }
+		.cta-content { padding: 60px 16px; }
+	}
+	
+	@media (max-width: 576px) {
+		.service-card { padding: 25px 18px; }
+		.rental-grid { gap: 16px; }
+		.page-header h1 { font-size: 1.85rem; }
+		.page-badge { font-size: 0.75rem; padding: 8px 18px; }
 	}
 </style>
 

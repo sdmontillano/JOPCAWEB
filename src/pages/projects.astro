@@ -474,16 +474,41 @@ const categories = ["All", "Supply"];
 		.page-header h1 {
 			font-size: 2.75rem;
 		}
+		
+		.page-header {
+			padding: 150px 0 80px;
+		}
+	}
+	
+	@media (max-width: 768px) {
+		.projects-section { padding: 50px 0; }
+		.page-header h1 { font-size: 2.25rem; }
+		.page-header p { font-size: 1rem; }
+		.project-info { padding: 20px; }
+		.project-info h3 { font-size: 1.05rem; }
+		.filter-btn { padding: 10px 20px; font-size: 0.9rem; }
+		.filter-section { top: 70px; padding: 25px 0; }
+		.cta-content h2 { font-size: 1.75rem; }
+		.cta-section { padding: 50px 0; }
+		.lightbox-nav { width: 40px; height: 40px; font-size: 1rem; }
+		.lightbox-prev { left: 10px; }
+		.lightbox-next { right: 10px; }
 	}
 	
 	@media (max-width: 576px) {
 		.projects-grid {
 			grid-template-columns: 1fr;
+			gap: 24px;
 		}
 		
 		.lightbox-nav {
 			display: none;
 		}
+		
+		.page-header h1 { font-size: 1.85rem; }
+		.page-badge { font-size: 0.75rem; padding: 8px 18px; }
+		.filter-buttons { gap: 10px; }
+		.filter-btn { padding: 8px 16px; font-size: 0.85rem; }
 	}
 </style>
 
