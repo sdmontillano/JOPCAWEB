@@ -400,6 +400,22 @@ import Footer from '../components/Footer.astro';
 	
 	document.querySelectorAll('.scroll-reveal').forEach(el => scrollObserver.observe(el));
 	
+	// Read URL params and pre-fill form
+	const urlParams = new URLSearchParams(window.location.search);
+	const productParam = urlParams.get('product');
+	if (productParam) {
+		const messageField = document.getElementById('message') as HTMLTextAreaElement;
+		const inquiryType = document.getElementById('inquiryType') as HTMLSelectElement;
+		if (messageField) {
+			messageField.value = `I would like to inquire about: ${decodeURIComponent(productParam)}`;
+		}
+		if (inquiryType) {
+			inquiryType.value = 'truck_parts';
+		}
+		// Scroll to form
+		document.querySelector('.contact-form-card')?.scrollIntoView({ behavior: 'smooth' });
+	}
+
 	// Form submit
 	const form = document.getElementById('contactForm') as HTMLFormElement;
 	form?.addEventListener('submit', (e) => {

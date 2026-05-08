@@ -47,13 +47,15 @@ const products = [
 					{products.map((product, index) => (
 						<div class="product-card scroll-reveal" style={`animation-delay: ${index * 0.05}s`}>
 							<div class="product-image">
-								<img src={product.image} alt={product.name} loading="lazy" />
+								<img src={product.image} alt="Truck Parts" loading="lazy" />
 								<div class="product-overlay">
 									<button class="product-zoom" data-src={product.image} data-title="Truck Parts">
 										<i class="fas fa-expand"></i>
 									</button>
+									<a href={`/contact?product=${encodeURIComponent(product.image)}`} class="product-inquire">
+										<i class="fas fa-envelope"></i> Inquire
+									</a>
 								</div>
-							</div>
 							</div>
 						</div>
 					))}
