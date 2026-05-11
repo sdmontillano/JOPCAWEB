@@ -198,12 +198,14 @@ const benefits = [
 	.benefits-section { background: var(--white); }
 	
 	.benefits-grid {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
 		gap: 25px;
 	}
 	
 	.benefit-card {
+		flex: 0 1 280px;
 		background: var(--white);
 		padding: 35px 25px;
 		border-radius: 16px;
@@ -433,11 +435,11 @@ const benefits = [
 	
 	/* Responsive */
 	@media (max-width: 992px) {
-		.benefits-grid,
 		.apply-options { grid-template-columns: repeat(2, 1fr); }
 		.jobs-grid { grid-template-columns: 1fr; }
 		.page-header h1 { font-size: 2.75rem; }
 		.page-header { padding: 140px 0 80px; }
+		.benefits-grid { gap: 20px; }
 	}
 	
 	@media (max-width: 768px) {
@@ -453,8 +455,8 @@ const benefits = [
 	}
 	
 	@media (max-width: 576px) {
-		.benefits-grid,
 		.apply-options { grid-template-columns: 1fr; }
+		.benefit-card { flex: 0 1 100%; }
 		.page-header h1 { font-size: 1.85rem; }
 		.page-badge { font-size: 0.75rem; padding: 8px 18px; }
 		.apply-options { gap: 16px; }
